@@ -2,7 +2,8 @@ import React from "react";
 type Props = {
     todoText: string,
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-    onClick:() => void
+    onClick:() => void,
+    disabled:boolean
 }
 const style = {
     backgroundColor: "#c6e5d9",
@@ -13,11 +14,11 @@ const style = {
     borderRadius: "8px"
 }
 export const InputTodo = (props:Props) => {    
-    const {todoText,onChange, onClick } = props;
+    const {todoText,onChange, onClick, disabled } = props;
     return (
         <div style={style}> 
-            <input type="text" placeholder="TODOを入力" value={todoText} onChange={onChange}/>
-            <button onClick={onClick}>追加</button>
+            <input disabled={disabled} type="text" placeholder="TODOを入力" value={todoText} onChange={onChange}/>
+            <button disabled={disabled} onClick={onClick}>追加</button>
         </div>
     )
 }
