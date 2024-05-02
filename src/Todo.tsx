@@ -1,12 +1,12 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import "./Todo.css"
 
 export const Todo = () => {
   const [todoText, setTodoText] = useState("")
-  const [incompleteTodos, setIncompleteTodos] = useState(["todo1","todo2"]);
-  const [completeTodos, setCompleteTodos] = useState(["todo1でした","todo2でした"]);
+  const [incompleteTodos, setIncompleteTodos] = useState([""]);
+  const [completeTodos, setCompleteTodos] = useState([""]);
 
-  const onChangeTodoText = (event) => {
+  const onChangeTodoText = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodoText(event.target.value);
     // 実際はreact-hook-formとかを使うことが多いが一旦今回はこのまま
   }
