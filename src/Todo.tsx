@@ -3,8 +3,8 @@ import "./Todo.css"
 
 export const Todo = () => {
   const [todoText, setTodoText] = useState("")
-  const [incompleteTodos, setIncompleteTodos] = useState([""]);
-  const [completeTodos, setCompleteTodos] = useState([""]);
+  const [incompleteTodos, setIncompleteTodos] = useState<string[]>([]);
+  const [completeTodos, setCompleteTodos] = useState<string[]>([]);
 
   const onChangeTodoText = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodoText(event.target.value);
