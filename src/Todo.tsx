@@ -2,14 +2,26 @@ import { useState } from "react"
 import "./Todo.css"
 
 export const Todo = () => {
+  const [todoText, setTodoText] = useState("")
   const [incompleteTodos, setIncompleteTodos] = useState(["todo1","todo2"]);
-  const [completeTodos, setCompleteTodos] = useState(["todo1でしたあ","todo2でしたあ"]);
+  const [completeTodos, setCompleteTodos] = useState(["todo1でした","todo2でした"]);
 
+  const onChangeTodoText = (event) => {
+    setTodoText(event.target.value);
+    // 実際はreact-hook-formとかを使うことが多いが一旦今回はこのまま
+  }
+
+  const onClickAdd = () => {
+    if(todoText === "") return;
+    const newTodos = [...incompleteTodos, todoText];
+    setIncompleteTodos(newTodos);
+    setTodoText("");
+  }
   return (
     <>
       <div className="input-area"> 
-        <input type="text" placeholder="TODOを入力" />
-        <button>追加</button>
+        <input type="text" placeholder="TODOを入力" value={todoText} onChange={onChangeTodoText}/>
+        <button onClick={onClickAdd}>追加</button>
       </div>
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
